@@ -17,6 +17,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Hero from '@/components/Hero';
 import FeaturedMenu from '@/components/FeaturedMenu';
 import Story from '@/components/Story';
+import Location from '@/components/Location';
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -39,6 +40,7 @@ export default function Home() {
       <Hero />
       <FeaturedMenu />
       <Story />
+      <Location />
       {
         !top && (
           <Fab 
