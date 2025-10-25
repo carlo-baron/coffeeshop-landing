@@ -18,6 +18,7 @@ import Hero from '@/components/Hero';
 import FeaturedMenu from '@/components/FeaturedMenu';
 import Story from '@/components/Story';
 import Location from '@/components/Location';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -33,7 +34,7 @@ export default function Home() {
 
   return (
     <Container
-    className='h-screen w-full'
+    className='snap-y h-screen w-full'
     disableGutters
     maxWidth={false}
     >
@@ -41,6 +42,8 @@ export default function Home() {
       <FeaturedMenu />
       <Story />
       <Location />
+      <Footer />
+
       {
         !top && (
           <Fab 

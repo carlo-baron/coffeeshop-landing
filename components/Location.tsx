@@ -22,7 +22,7 @@ export default function Location(){
   return(
     <Box
     id='location'
-    className='bg-green-100 p-4 min-w-full h-screen'
+    className='snap-start bg-green-100 p-4 w-full min-h-screen'
     >
       <Box className="header">
         <Typography variant="h4" fontWeight={600} className="text-center">
