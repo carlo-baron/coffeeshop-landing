@@ -77,11 +77,21 @@ export default function Hero() {
               horizontal: 'right',
             }}
           >
-            <MenuItem onClick={handleCloseMenu}>Hero</MenuItem>
-            <MenuItem onClick={handleCloseMenu}>Menu</MenuItem>
-            <MenuItem onClick={handleCloseMenu}>About</MenuItem>
-            <MenuItem onClick={handleCloseMenu}>Location</MenuItem>
-            <MenuItem onClick={handleCloseMenu}>Contact</MenuItem>
+            <MenuItem component="a" href="#hero" onClick={handleCloseMenu}>
+              Hero
+            </MenuItem>
+            <MenuItem component="a" href="#menu" onClick={handleCloseMenu}>
+              Menu
+            </MenuItem>
+            <MenuItem component="a" href="#about" onClick={handleCloseMenu}>
+              About
+            </MenuItem>
+            <MenuItem component="a" href="#location" onClick={handleCloseMenu}>
+              Location
+            </MenuItem>
+            <MenuItem component="a" href="#contact" onClick={handleCloseMenu}>
+              Contact
+            </MenuItem>
           </Menu>
         )}
       </Box>

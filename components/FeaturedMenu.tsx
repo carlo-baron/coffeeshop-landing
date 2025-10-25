@@ -48,12 +48,12 @@ export default function FeaturedMenu() {
 
   return (
     <Box
+    id="menu" 
     ref={targetRef}
     component='section'
     className='bg-black relative h-[600vh]'
     >
       <Box 
-      id="menu" 
       className="overflow-hidden sticky bg-white top-0 
       left-0 gap-2 flex flex-col p-4 w-full h-[100vh]"
       >
