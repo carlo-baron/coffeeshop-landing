@@ -54,7 +54,7 @@ export default function FeaturedMenu() {
     className='bg-black relative h-[600vh]'
     >
       <Box 
-      className="overflow-hidden sticky bg-white top-0 
+      className="bg-green-100 overflow-hidden sticky top-0 
       left-0 gap-2 flex flex-col p-4 w-full h-[100vh]"
       >
         <Box 
@@ -86,7 +86,7 @@ export default function FeaturedMenu() {
                   borderRadius: '1rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  width: '90%'
+                  width: '100%'
                 }}
               >
                 <img

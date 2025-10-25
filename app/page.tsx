@@ -23,7 +23,6 @@ export default function Home() {
   const [top, setTop] = useState<boolean>(true);
 
   useMotionValueEvent(scrollYProgress, 'change', latest => {
-    console.log(latest);
     if(latest > 0.05){
       setTop(false);
     }else{
