@@ -9,12 +9,13 @@ import FeaturedMenu from '@/components/FeaturedMenu';
 export default function Home() {
   return (
     <Container
-    className='overflow-y-scroll snap-y h-screen w-full'
+    className='h-screen w-full'
     disableGutters
     maxWidth={false}
     >
       <Hero />
       <FeaturedMenu />
+      <Hero />
     </Container>
   );
 }

@@ -31,7 +31,7 @@ export default function Hero() {
   return (
     <Box
       id='hero'
-      className='snap-end flex flex-col justify-center items-center relative w-full h-screen'
+      className='flex flex-col justify-center items-center relative w-full h-screen'
     >
       <img
         className='absolute z-[-1] brightness-70 object-cover w-full h-full'
