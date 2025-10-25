@@ -31,7 +31,7 @@ export default function Hero() {
   return (
     <Box
       id='hero'
-      className='snap-center flex flex-col justify-center items-center relative w-full h-screen'
+      className='flex flex-col justify-center items-center relative w-full h-screen'
     >
       <img
         className='absolute z-[-1] brightness-70 object-cover w-full h-full'
@@ -54,11 +54,47 @@ export default function Hero() {
           <Typography variant='h6'>Brew Haven</Typography>
         </Box>
 
+        <Box className="hidden sm:flex gap-4">
+          <Link 
+          href='#menu'
+          color='inherit'
+          underline='none'
+          >
+            Menu
+          </Link>
+          <Link 
+          href='#about'
+          color='inherit'
+          underline='none'
+          >
+            About
+          </Link>
+          <Link 
+          href='#location'
+          color='inherit'
+          underline='none'
+          >
+            Location 
+          </Link>
+          <Link 
+          href='#contact'
+          color='inherit'
+          underline='none'
+          >
+            Contact 
+          </Link>
+        </Box>
+
         <IconButton
           size='medium'
           color='inherit'
           onClick={handleOpenMenu}
           ref={menuAnchorEl}
+          sx={{
+            display: {
+              sm: 'none'
+            }
+          }}
         >
           <MenuIcon sx={{ color: 'white' }} />
         </IconButton>
