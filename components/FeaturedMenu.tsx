@@ -1,62 +1,26 @@
 "use client";
-import {
-  Box,
-  Typography,
-  Card,
-  CardContent,
-  CardMedia,
-} from '@mui/material';
-import {motion} from 'framer-motion';
-
-const FeaturedMenuItems = [
-  {
-    id: 1,
-    image: '/latte.jpg',
-    name: 'Latte',
-    price: 5.0,
-    description: 'Discover our handpicked selection of artisan coffee and fresh baked goods',
-  },
-  {
-    id: 2,
-    image: '/croissant.jpg',
-    name: 'Croissant',
-    price: 4.7,
-    description: 'Buttery, flaky croissant baked fresh daily in our kitchen',
-  },
-  {
-    id: 3,
-    image: '/cookie.jpg',
-    name: 'Chocolate Cookie',
-    price: 6.5,
-    description: 'Rich, chewy chocolate cookie loaded with chunks of premium dark chocolate',
-  },
-];
+import { Box, Typography, Card, CardContent, CardMedia } from "@mui/material";
+import { motion } from "framer-motion";
+import { featuredMenu } from "@/config/siteConfig";
 
 export default function FeaturedMenu() {
-  const menuItems = FeaturedMenuItems.map((item) => (
+  const menuItems = featuredMenu.items.map((item) => (
     <Card
-      className='snap-center'
-      key={item.id}
+      className="snap-center"
+      key={item.name}
       sx={{
-        borderRadius: '1rem',
-        display: 'flex',
-        flexDirection: 'column',
-        width:{
-          xs: '100%',
-          sm: '350px'
-        },
-        flexShrink: 0
+        borderRadius: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        width: { xs: "100%", sm: "350px" },
+        flexShrink: 0,
       }}
     >
-      <CardMedia 
-      sx={{ 
-        overflow: 'hidden',
-      }}
-      >
+      <CardMedia sx={{ overflow: "hidden" }}>
         <motion.img
           className="aspect-1/1 w-full object-cover"
           src={item.image}
-          alt={item.name}
+          alt={item.alt}
           whileHover={{ scale: 1.1 }}
         />
       </CardMedia>
@@ -65,7 +29,12 @@ export default function FeaturedMenu() {
           <Typography variant="h4" fontWeight={500}>
             {item.name}
           </Typography>
-          <Typography variant="h6" fontWeight={400} className="price" color="warning">
+          <Typography
+            variant="h6"
+            fontWeight={400}
+            className="price"
+            color="warning"
+          >
             ${item.price}
           </Typography>
         </Box>
@@ -77,23 +46,26 @@ export default function FeaturedMenu() {
   ));
 
   return (
-    <Box 
-    id='menu'
-    className=" bg-green-100 
-    gap-2 flex flex-col p-4 w-full h-[100vh]"
+    <Box
+      id="menu"
+      component="section"
+      className="bg-accent-bg gap-2 flex flex-col p-4 w-full h-[100vh]"
     >
-      <Box 
-      className="flex flex-col items-center justify-center 
-      w-full header"
-      >
-        <Typography variant="h4" fontWeight={600}>
-          Featured Menu
+      <Box className="flex flex-col items-center justify-center w-full header">
+        <Typography variant="h4" fontWeight={600} component="h2">
+          {featuredMenu.title}
         </Typography>
-        <Typography className="text-center" variant="caption" color="textSecondary">
-          Discover our handpicked selection of artisan coffee and fresh baked goods
+        <Typography
+          className="text-center"
+          variant="caption"
+          color="textSecondary"
+          component="p"
+        >
+          {featuredMenu.subtitle}
         </Typography>
       </Box>
-      <Box className="xl:justify-center xl:items-center snap-x flex p-4 gap-4 overflow-x-scroll">
+
+      <Box className="xl:justify-center xl:items-center snap-x flex p-4 gap-4 overflow-x-auto">
         {menuItems}
       </Box>
     </Box>

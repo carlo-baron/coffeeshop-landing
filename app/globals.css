@@ -1,4 +1,22 @@
 @import "tailwindcss";
+
+/* =============================================================================
+   BRAND COLOR TOKENS — Change these to match your brand.
+   These feed every Tailwind utility class used in the components.
+   Names are semantic: "accent" = section backgrounds, "footer" = footer colors.
+   After changing a value, save and the entire site updates.
+   ============================================================================= */
+@theme {
+  --color-accent-bg: #f1f8e9;        /* section backgrounds (FeaturedMenu, Story, Location) */
+  --color-accent-icon-bg: #e8f5e9;   /* icon circle background */
+  --color-accent-icon: #4caf50;      /* icon circle foreground */
+  --color-footer-bg: #1c1c1c;        /* footer background */
+  --color-footer-muted: #757575;     /* footer muted text & copyright */
+  --color-footer-icon-bg: #424242;   /* social icon circle background */
+  --color-nav-hover: #ff9800;        /* nav/footer link hover color */
+  --color-social-hover: #f59e0b;     /* social icon hover background */
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -9,6 +27,6 @@
   }
 }
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }

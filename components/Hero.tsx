@@ -8,19 +8,18 @@ import {
   IconButton,
   Menu,
   MenuItem,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import CoffeeIcon from '@mui/icons-material/Coffee';
-import { 
-  useState,
-  useRef,
-} from 'react';
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CoffeeIcon from "@mui/icons-material/Coffee";
+import { useState } from "react";
+import { hero, navigation } from "@/config/siteConfig";
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const menuAnchorEl = useRef<HTMLButtonElement | null>(null);
+  const [menuAnchorEl, setMenuAnchorEl] = useState<HTMLElement | null>(null);
 
-  const handleOpenMenu = () => {
+  const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setMenuAnchorEl(event.currentTarget);
     setMenuOpen(true);
   };
 
@@ -30,140 +29,111 @@ export default function Hero() {
 
   return (
     <Box
-      id='hero'
-      className='flex flex-col justify-center items-center relative w-full h-screen'
+      id="hero"
+      component="header"
+      className="flex flex-col justify-center items-center relative w-full h-screen"
     >
+      {/* Background image — plain <img> is intentional here for full-bleed
+          object-cover behavior. Next.js <Image> requires known dimensions
+          which is awkward for a full-viewport background. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        className='absolute z-[-1] brightness-70 object-cover w-full h-full'
-        src='/cafebg.jpg'
-        alt='Cafe Background'
+        className="absolute z-[-1] brightness-70 object-cover w-full h-full"
+        src={hero.backgroundImage}
+        alt={hero.backgroundAlt}
       />
 
+      {/* ---- Navigation bar ------------------------------------------------ */}
       <Box
-        className='flex justify-between items-center text-white nav p-4 absolute top-0 left-0 w-full'
+        component="nav"
+        className="flex justify-between items-center text-white nav p-4 absolute top-0 left-0 w-full"
+        role="navigation"
+        aria-label="Main navigation"
       >
-        <Box
-        className='flex items-center gap-2'
-        >
-          <Link
-          href='#hero'
-          color='inherit'
-          >
-            <CoffeeIcon/>
+        {/* Brand / logo */}
+        <Box className="flex items-center gap-2">
+          <Link href="#hero" color="inherit" aria-label={hero.brandName}>
+            <CoffeeIcon />
           </Link>
-          <Typography variant='h6'>Brew Haven</Typography>
+          <Typography variant="h6">{hero.brandName}</Typography>
         </Box>
 
-        <Box className="hidden sm:flex gap-4">
-          <Link 
-          href='#menu'
-          color='inherit'
-          underline='none'
-          >
-            Menu
-          </Link>
-          <Link 
-          href='#about'
-          color='inherit'
-          underline='none'
-          >
-            About
-          </Link>
-          <Link 
-          href='#location'
-          color='inherit'
-          underline='none'
-          >
-            Location 
-          </Link>
-          <Link 
-          href='#contact'
-          color='inherit'
-          underline='none'
-          >
-            Contact 
-          </Link>
+        {/* Desktop nav links — sourced from config */}
+        <Box component="ul" className="hidden sm:flex gap-4 list-none p-0 m-0">
+          {navigation.map((item) => (
+            <li key={item.href}>
+              <Link href={item.href} color="inherit" underline="none">
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </Box>
 
+        {/* Mobile hamburger button */}
         <IconButton
-          size='medium'
-          color='inherit'
+          size="medium"
+          color="inherit"
           onClick={handleOpenMenu}
-          ref={menuAnchorEl}
-          sx={{
-            display: {
-              sm: 'none'
-            }
-          }}
+          aria-label="Open navigation menu"
+          sx={{ display: { sm: "none" } }}
         >
-          <MenuIcon sx={{ color: 'white' }} />
+          <MenuIcon sx={{ color: "white" }} />
         </IconButton>
 
-        {menuAnchorEl.current && (
-          <Menu
-            anchorEl={menuAnchorEl.current}
-            open={menuOpen}
-            onClose={handleCloseMenu}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            <MenuItem component="a" href="#hero" onClick={handleCloseMenu}>
-              Hero
+        {/* Mobile dropdown menu — sourced from config */}
+        <Menu
+          anchorEl={menuAnchorEl}
+          open={menuOpen}
+          onClose={handleCloseMenu}
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+          transformOrigin={{ vertical: "top", horizontal: "right" }}
+        >
+          {navigation.map((item) => (
+            <MenuItem
+              key={item.href}
+              component="a"
+              href={item.href}
+              onClick={handleCloseMenu}
+            >
+              {item.label}
             </MenuItem>
-            <MenuItem component="a" href="#menu" onClick={handleCloseMenu}>
-              Menu
-            </MenuItem>
-            <MenuItem component="a" href="#about" onClick={handleCloseMenu}>
-              About
-            </MenuItem>
-            <MenuItem component="a" href="#location" onClick={handleCloseMenu}>
-              Location
-            </MenuItem>
-            <MenuItem component="a" href="#contact" onClick={handleCloseMenu}>
-              Contact
-            </MenuItem>
-          </Menu>
-        )}
+          ))}
+        </Menu>
       </Box>
 
+      {/* ---- Hero text content --------------------------------------------- */}
       <Typography
-        className='text-center'
-        color='white'
+        component="h1"
+        className="text-center"
+        color="white"
         sx={{
-          fontWeight: '800 !important',
+          fontWeight: "800 !important",
           typography: {
-            xs: 'h3',
-            md: 'h2',
-            lg: 'h1',
+            xs: "h3",
+            md: "h2",
+            lg: "h1",
           },
         }}
       >
-        Welcome To Brew Haven
+        {hero.headline}
       </Typography>
 
       <Typography
-        className='text-center'
-        variant='subtitle1'
-        color='white'
+        className="text-center"
+        variant="subtitle1"
+        color="white"
+        component="p"
       >
-        Experience the perfect blend of artisan coffee, fresh pastries, and warm hospitality
+        {hero.subtitle}
       </Typography>
 
       <Button
-        variant='contained'
-        color='warning'
-        sx={{
-          textTransform: 'none',
-          marginTop: '1rem',
-        }}
+        variant="contained"
+        color="warning"
+        href={hero.ctaHref}
+        sx={{ textTransform: "none", marginTop: "1rem" }}
       >
-        Visit Us
+        {hero.ctaText}
       </Button>
     </Box>
   );

@@ -102,3 +102,6 @@ dist/
 # TypeScript
 next-env.d.ts
 
+# QA checklist — seller only, never ships to buyers
+QA_CHECKLIST.md
+
